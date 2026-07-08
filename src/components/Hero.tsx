@@ -13,7 +13,10 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden sm:px-4 pt-16">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden sm:px-4 pt-16"
+    >
       {/* Animated background gradient orbs */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -60,7 +63,9 @@ const Hero = () => {
                 Hi there, I&apos;m
               </h2>
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4">
-                <span className="text-gradient">Muhammad Shahzaib</span>
+                <span className="text-gradient">
+                  Muhammad Shahzaib Khan Khattak
+                </span>
               </h1>
             </motion.div>
 
@@ -74,8 +79,9 @@ const Hero = () => {
                 Senior Frontend Developer
               </h3>
               <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed">
-                Full Stack MERN Developer with 2+ years of experience building scalable web applications. 
-                Currently crafting exceptional digital experiences at Tajirpay, specializing in React.js, 
+                Full Stack MERN Developer with 2+ years of experience building
+                scalable web applications. Currently crafting exceptional
+                digital experiences at Tajirpay, specializing in React.js,
                 Node.js, and modern web technologies.
               </p>
             </motion.div>
@@ -91,9 +97,7 @@ const Hero = () => {
                 className="gradient-primary text-primary-foreground hover:opacity-90 transition-opacity glow-cyan text-sm sm:text-base"
                 asChild
               >
-                <a href="#contact">
-                  Get In Touch
-                </a>
+                <a href="#contact">Get In Touch</a>
               </Button>
               <Button
                 size="lg"
@@ -186,7 +190,9 @@ const Hero = () => {
         className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer hover:opacity-70 transition-opacity"
         aria-label="Scroll to about section"
       >
-        <p className="text-xs sm:text-sm text-muted-foreground">Scroll to explore</p>
+        <p className="text-xs sm:text-sm text-muted-foreground">
+          Scroll to explore
+        </p>
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
