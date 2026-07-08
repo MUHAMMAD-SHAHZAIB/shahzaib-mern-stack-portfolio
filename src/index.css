@@ -1,91 +1,196 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-cyan: hsl(var(--gradient-primary-start));
+  --color-blue: hsl(var(--gradient-primary-end));
+  --color-orange: hsl(var(--gradient-accent-start));
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --shadow-glow: 0 0 20px hsl(var(--glow-cyan) / 0.3), 0 0 40px hsl(var(--glow-cyan) / 0.1);
+  --animate-fade-in: fade-in 0.6s ease-out;
+  --animate-fade-in-up: fade-in-up 0.6s ease-out;
+  --animate-slide-in-left: slide-in-left 0.6s ease-out;
+  --animate-slide-in-right: slide-in-right 0.6s ease-out;
+  --animate-scale-in: scale-in 0.4s ease-out;
+  --animate-float: float 3s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
+}
 
-@layer base {
+@utility container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @media (width >= 640px) {
+    padding-inline: 1.5rem;
+  }
+
+  @media (width >= 1024px) {
+    padding-inline: 2rem;
+  }
+
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
 :root {
-    --background: 220 26% 5%;
-    --foreground: 210 40% 98%;
+  --background: 220 26% 5%;
+  --foreground: 210 40% 98%;
+  --card: 220 20% 8%;
+  --card-foreground: 210 40% 98%;
+  --popover: 220 20% 8%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 189 100% 50%;
+  --primary-foreground: 220 26% 5%;
+  --secondary: 220 20% 12%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 220 20% 12%;
+  --muted-foreground: 215 16% 60%;
+  --accent: 27 96% 61%;
+  --accent-foreground: 220 26% 5%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 220 20% 15%;
+  --input: 220 20% 15%;
+  --ring: 189 100% 50%;
+  --radius: 0.75rem;
+  --gradient-primary-start: 189 100% 50%;
+  --gradient-primary-end: 217 91% 60%;
+  --gradient-accent-start: 27 96% 61%;
+  --gradient-accent-end: 38 100% 50%;
+  --glow-cyan: 189 100% 50%;
+  --glow-blue: 217 91% 60%;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-    --card: 220 20% 8%;
-    --card-foreground: 210 40% 98%;
+* {
+  border-color: hsl(var(--border));
+}
 
-    --popover: 220 20% 8%;
-    --popover-foreground: 210 40% 98%;
+html {
+  scroll-behavior: smooth;
+}
 
-    --primary: 189 100% 50%;
-    --primary-foreground: 220 26% 5%;
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
 
-    --secondary: 220 20% 12%;
-    --secondary-foreground: 210 40% 98%;
+.gradient-primary {
+  background: linear-gradient(135deg, hsl(var(--gradient-primary-start)), hsl(var(--gradient-primary-end)));
+}
 
-    --muted: 220 20% 12%;
-    --muted-foreground: 215 16% 60%;
+.gradient-accent {
+  background: linear-gradient(135deg, hsl(var(--gradient-accent-start)), hsl(var(--gradient-accent-end)));
+}
 
-    --accent: 27 96% 61%;
-    --accent-foreground: 220 26% 5%;
+.text-gradient,
+.gradient-text {
+  background: linear-gradient(135deg, hsl(var(--gradient-primary-start)), hsl(var(--gradient-primary-end)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+.glow-cyan {
+  box-shadow: 0 0 20px hsl(var(--glow-cyan) / 0.3), 0 0 40px hsl(var(--glow-cyan) / 0.1);
+}
 
-    --border: 220 20% 15%;
-    --input: 220 20% 15%;
-    --ring: 189 100% 50%;
+.glow-blue {
+  box-shadow: 0 0 20px hsl(var(--glow-blue) / 0.3), 0 0 40px hsl(var(--glow-blue) / 0.1);
+}
 
-    --radius: 0.75rem;
-
-    --gradient-primary-start: 189 100% 50%;
-    --gradient-primary-end: 217 91% 60%;
-    --gradient-accent-start: 27 96% 61%;
-    --gradient-accent-end: 38 100% 50%;
-
-    --glow-cyan: 189 100% 50%;
-    --glow-blue: 217 91% 60%;
-
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  }
-
-  html {
-    scroll-behavior: smooth;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@layer utilities {
-  .gradient-primary {
-    background: linear-gradient(135deg, hsl(var(--gradient-primary-start)), hsl(var(--gradient-primary-end)));
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
   }
-
-  .gradient-accent {
-    background: linear-gradient(135deg, hsl(var(--gradient-accent-start)), hsl(var(--gradient-accent-end)));
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
+}
 
-  .text-gradient {
-    background: linear-gradient(135deg, hsl(var(--gradient-primary-start)), hsl(var(--gradient-primary-end)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
   }
-
-  .glow-cyan {
-    box-shadow: 0 0 20px hsl(var(--glow-cyan) / 0.3), 0 0 40px hsl(var(--glow-cyan) / 0.1);
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
+}
 
-  .glow-blue {
-    box-shadow: 0 0 20px hsl(var(--glow-blue) / 0.3), 0 0 40px hsl(var(--glow-blue) / 0.1);
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px hsl(var(--glow-cyan) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--glow-cyan) / 0.6), 0 0 60px hsl(var(--glow-blue) / 0.3);
   }
 }

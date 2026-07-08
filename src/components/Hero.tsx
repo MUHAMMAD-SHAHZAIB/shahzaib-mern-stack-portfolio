@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Download } from "lucide-react";
+import { Mail, Download } from "lucide-react";
 import profileImage from "@/assets/profile.jpg";
 
 const Hero = () => {
@@ -56,7 +57,7 @@ const Hero = () => {
               transition={{ delay: 0.2, duration: 0.6 }}
             >
               <h2 className="text-base sm:text-lg md:text-xl font-medium text-muted-foreground mb-2">
-                Hi there, I'm
+                Hi there, I&apos;m
               </h2>
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4">
                 <span className="text-gradient">Muhammad Shahzaib</span>
@@ -119,7 +120,7 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
-                <Github className="h-5 w-5 sm:h-6 sm:w-6" />
+                <span className="text-sm font-bold sm:text-base">GH</span>
               </a>
               <a
                 href="https://www.linkedin.com/in/muhammad-shahzaib-anwar/"
@@ -127,7 +128,7 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
-                <Linkedin className="h-5 w-5 sm:h-6 sm:w-6" />
+                <span className="text-sm font-bold sm:text-base">in</span>
               </a>
               <a
                 href="mailto:shahzaibanwar1122@gmail.com"
@@ -152,9 +153,11 @@ const Hero = () => {
                 className="absolute inset-0 rounded-full border-2 border-dashed border-primary/30"
               />
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl">
-                <img
+                <Image
                   src={profileImage}
                   alt="Muhammad Shahzaib"
+                  sizes="(min-width: 768px) 384px, (min-width: 640px) 320px, 256px"
+                  priority
                   className="w-full h-full object-cover"
                 />
               </div>

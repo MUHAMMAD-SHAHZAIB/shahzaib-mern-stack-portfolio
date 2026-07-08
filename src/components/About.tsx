@@ -41,7 +41,7 @@ const About = () => {
               className="text-base sm:text-lg text-muted-foreground leading-relaxed relative z-10"
             >
               Currently working as a <span className="text-accent font-semibold">Senior Frontend Developer</span> at 
-              Tajirpay, where I'm building <span className="text-accent font-semibold">HICar</span> - a rental SaaS 
+              Tajirpay, where I&apos;m building <span className="text-accent font-semibold">HICar</span> - a rental SaaS 
               product for the Australian market. I specialize in React.js, Node.js, Express.js, MongoDB, and modern 
               UI/UX design practices.
             </motion.p>
@@ -52,7 +52,7 @@ const About = () => {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="text-base sm:text-lg text-muted-foreground leading-relaxed relative z-10"
             >
-              I'm passionate about creating exceptional digital experiences that combine beautiful design with 
+              I&apos;m passionate about creating exceptional digital experiences that combine beautiful design with 
               robust functionality. From requirement gathering to deployment, I focus on delivering high-performance 
               solutions that exceed expectations.
             </motion.p>

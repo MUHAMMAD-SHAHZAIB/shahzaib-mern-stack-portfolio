@@ -1,12 +1,14 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Skills from "@/components/Skills";
-import Experience from "@/components/Experience";
-import Projects from "@/components/Projects";
-import Contact from "@/components/Contact";
+"use client";
 
-const Index = () => {
+import About from "@/components/About";
+import Contact from "@/components/Contact";
+import Experience from "@/components/Experience";
+import Hero from "@/components/Hero";
+import Navbar from "@/components/Navbar";
+import Projects from "@/components/Projects";
+import Skills from "@/components/Skills";
+
+export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -16,16 +18,12 @@ const Index = () => {
       <Experience />
       <Projects />
       <Contact />
-      
-      <footer className="py-6 sm:py-8 px-4 border-t border-border">
+
+      <footer className="border-t border-border px-4 py-6 sm:py-8">
         <div className="container mx-auto text-center text-muted-foreground">
-          <p className="text-xs sm:text-sm">
-            © {new Date().getFullYear()} Muhammad Shahzaib.
-          </p>
+          <p className="text-xs sm:text-sm">© {new Date().getFullYear()} Muhammad Shahzaib.</p>
         </div>
       </footer>
     </div>
   );
-};
-
-export default Index;
+}
