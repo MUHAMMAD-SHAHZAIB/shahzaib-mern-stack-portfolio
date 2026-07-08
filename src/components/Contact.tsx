@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Contact = () => {
@@ -31,12 +31,12 @@ const Contact = () => {
 
   const socialLinks = [
     {
-      icon: Github,
+      icon: "GH",
       label: "GitHub",
       link: "https://github.com/Shahzaib.Github",
     },
     {
-      icon: Linkedin,
+      icon: "in",
       label: "LinkedIn",
       link: "https://linkedin.com",
     },
@@ -56,7 +56,7 @@ const Contact = () => {
             Get In <span className="text-gradient">Touch</span>
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground text-center mb-8 sm:mb-12 max-w-2xl mx-auto">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
           </p>
 
           <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 md:p-12 relative overflow-hidden">
@@ -105,7 +105,7 @@ const Contact = () => {
                 className="text-center pt-4 sm:pt-6 border-t border-border"
               >
                 <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base">
-                  Let's build something amazing together
+                  Let&apos;s build something amazing together
                 </p>
                 <div className="flex justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">
                   {socialLinks.map((social) => (
@@ -117,7 +117,7 @@ const Contact = () => {
                       className="p-3 sm:p-4 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
                       aria-label={social.label}
                     >
-                      <social.icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                      <span className="text-sm font-bold sm:text-base">{social.icon}</span>
                     </a>
                   ))}
                 </div>

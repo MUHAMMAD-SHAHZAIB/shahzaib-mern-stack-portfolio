@@ -1,17 +1,20 @@
-## 🚀 Live Portfolio
+# Muhammad Shahzaib Portfolio
 
-You can visit my live portfolio here:
+Personal portfolio built with the latest Next.js App Router, React, TypeScript, and Tailwind CSS v4.
 
-👉 **https://shahzaib-mern-portfolio.netlify.app/**
+## Scripts
 
+```bash
+npm run dev
+npm run build
+npm run lint
+npm run start
+```
 
-## What technologies are used for this project?
+## Stack
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
+- Next.js 16
+- React 19
+- Tailwind CSS 4
+- TypeScript 6
+- Framer Motion
