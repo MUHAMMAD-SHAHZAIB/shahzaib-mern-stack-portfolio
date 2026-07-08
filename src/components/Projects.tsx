@@ -54,7 +54,7 @@ const Projects = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="projects" className="py-12 sm:py-16 md:py-20  sm:px-6 relative">
+    <section id="projects" className="relative px-4 py-16 sm:px-6 md:py-24">
       <div className="container mx-auto">
         <motion.div
           ref={ref}
@@ -62,37 +62,50 @@ const Projects = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-center">
-            Featured <span className="text-gradient">Projects</span>
-          </h2>
-          <p className="text-sm sm:text-base text-muted-foreground text-center mb-8 sm:mb-12 max-w-2xl mx-auto px-4">
-            A showcase of my recent work and contributions
-          </p>
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-primary">
+              Selected work
+            </p>
+            <h2 className="text-3xl font-black sm:text-5xl">
+              Featured <span className="text-gradient">Projects</span>
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-base">
+              A showcase of SaaS workflows, admin systems, inspection tools,
+              and authentication products.
+            </p>
+          </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-7xl mx-auto">
+          <div className="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="bg-card border border-border rounded-2xl p-4 sm:p-6 hover:border-primary/50 transition-all duration-300 relative overflow-hidden group"
+                className={`glass-panel panel-hover group relative overflow-hidden rounded-[1.7rem] p-5 sm:p-6 ${
+                  project.current ? "lg:col-span-2" : ""
+                }`}
               >
-                <div className="absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 gradient-primary rounded-full blur-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-                
-                <div className="relative z-10 h-full flex flex-col">
-                  <div className="flex items-start justify-between mb-3 sm:mb-4">
-                    <h3 className="text-lg sm:text-xl font-bold group-hover:text-primary transition-colors">
-                      {project.title}
-                    </h3>
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-emerald-400 to-accent opacity-70" />
+
+                <div className="relative z-10 flex h-full flex-col">
+                  <div className="mb-5 flex items-start justify-between gap-4">
+                    <div>
+                      <span className="mb-3 inline-flex rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-bold text-primary">
+                        0{index + 1}
+                      </span>
+                      <h3 className="text-xl font-black transition-colors group-hover:text-primary sm:text-2xl">
+                        {project.title}
+                      </h3>
+                    </div>
                     {project.current && (
-                      <span className="text-xs px-2 py-1 gradient-accent text-accent-foreground rounded-full font-medium flex-shrink-0">
+                      <span className="flex-shrink-0 rounded-full bg-accent px-3 py-1 text-xs font-bold text-accent-foreground">
                         Current
                       </span>
                     )}
                   </div>
 
-                  <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 leading-relaxed flex-grow">
+                  <p className="mb-5 flex-grow text-sm leading-7 text-muted-foreground sm:text-base">
                     {project.description}
                   </p>
 
@@ -101,7 +114,7 @@ const Projects = () => {
                       {project.tech.map((tech) => (
                         <span
                           key={tech}
-                          className="text-xs px-2 py-1 sm:px-3 sm:py-1.5 bg-primary/10 text-primary rounded-lg border border-primary/20"
+                          className="rounded-xl border border-primary/20 bg-primary/10 px-2 py-1 text-xs text-primary sm:px-3 sm:py-1.5"
                         >
                           {tech}
                         </span>
@@ -112,7 +125,7 @@ const Projects = () => {
                       <Button
                         variant="outline"
                         size="sm"
-                        className="w-full border-primary/50 hover:bg-primary/10 text-xs sm:text-sm"
+                        className="h-10 w-full rounded-xl border-white/15 bg-white/[0.03] text-xs hover:border-primary/50 hover:bg-primary/10 sm:text-sm"
                         asChild
                       >
                         <a href={project.link} target="_blank" rel="noopener noreferrer">

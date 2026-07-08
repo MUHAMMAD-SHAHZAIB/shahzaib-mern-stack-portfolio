@@ -63,7 +63,7 @@ const Experience = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="experience" className="py-12 sm:py-16 md:py-20  sm:px-6 relative">
+    <section id="experience" className="relative px-4 py-16 sm:px-6 md:py-24">
       <div className="container mx-auto">
         <motion.div
           ref={ref}
@@ -71,31 +71,38 @@ const Experience = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-center">
-            Work <span className="text-gradient">Experience</span>
-          </h2>
-          <p className="text-sm sm:text-base text-muted-foreground text-center mb-8 sm:mb-12 max-w-2xl mx-auto px-4">
-            My professional journey in building exceptional web applications
-          </p>
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-primary">
+              Career path
+            </p>
+            <h2 className="text-3xl font-black sm:text-5xl">
+              Work <span className="text-gradient">Experience</span>
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-base">
+              My professional journey in building exceptional web applications.
+            </p>
+          </div>
 
-          <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
+          <div className="relative mx-auto max-w-4xl space-y-5">
+            <div className="absolute left-4 top-4 hidden h-[calc(100%-2rem)] w-px bg-gradient-to-b from-primary via-white/10 to-accent md:block" />
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="bg-card border border-border rounded-2xl p-4 sm:p-6 md:p-8 hover:border-primary/50 transition-all duration-300 relative overflow-hidden group"
+                className="glass-panel panel-hover group relative overflow-hidden rounded-[1.7rem] p-5 sm:p-6 md:ml-10 md:p-8"
               >
-                <div className="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 gradient-primary rounded-full blur-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-                
+                <span className="absolute -left-[2.05rem] top-8 hidden h-4 w-4 rounded-full border-2 border-background bg-primary shadow-glow md:block" />
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+
                 <div className="relative z-10">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3 sm:mb-4 gap-2">
                     <div>
                       <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1 flex flex-wrap items-center gap-2">
                         {exp.title}
                         {exp.current && (
-                          <span className="text-xs px-2 py-1 gradient-accent text-accent-foreground rounded-full font-medium">
+                          <span className="rounded-full bg-accent px-3 py-1 text-xs font-bold text-accent-foreground">
                             Current
                           </span>
                         )}
@@ -105,7 +112,7 @@ const Experience = () => {
                         {exp.company}
                       </p>
                     </div>
-                    <div className="flex flex-col gap-1 text-xs sm:text-sm text-muted-foreground">
+                    <div className="flex flex-col gap-1 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-xs text-muted-foreground sm:text-sm">
                       <p className="flex items-center gap-2">
                         <Calendar className="h-3 w-3 sm:h-4 sm:w-4" />
                         {exp.period}

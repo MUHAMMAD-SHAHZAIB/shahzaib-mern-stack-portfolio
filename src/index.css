@@ -55,19 +55,19 @@
 }
 
 :root {
-  --background: 220 26% 5%;
+  --background: 224 28% 5%;
   --foreground: 210 40% 98%;
-  --card: 220 20% 8%;
+  --card: 224 24% 9%;
   --card-foreground: 210 40% 98%;
-  --popover: 220 20% 8%;
+  --popover: 224 24% 9%;
   --popover-foreground: 210 40% 98%;
   --primary: 189 100% 50%;
   --primary-foreground: 220 26% 5%;
-  --secondary: 220 20% 12%;
+  --secondary: 224 22% 12%;
   --secondary-foreground: 210 40% 98%;
-  --muted: 220 20% 12%;
-  --muted-foreground: 215 16% 60%;
-  --accent: 27 96% 61%;
+  --muted: 224 18% 13%;
+  --muted-foreground: 214 18% 68%;
+  --accent: 31 96% 58%;
   --accent-foreground: 220 26% 5%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
@@ -93,9 +93,38 @@ html {
 }
 
 body {
-  background: hsl(var(--background));
+  background:
+    linear-gradient(180deg, hsl(224 35% 7%), hsl(var(--background)) 42%, hsl(228 28% 4%)),
+    hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  content: "";
+  background-image:
+    linear-gradient(hsl(189 100% 50% / 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(189 100% 50% / 0.06) 1px, transparent 1px),
+    linear-gradient(135deg, hsl(31 96% 58% / 0.08), transparent 38%, hsl(155 84% 48% / 0.06));
+  background-size: 72px 72px, 72px 72px, 100% 100%;
+  mask-image: linear-gradient(to bottom, black, transparent 82%);
+}
+
+body::after {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  opacity: 0.16;
+  background-image:
+    linear-gradient(transparent 0 50%, hsl(0 0% 100% / 0.05) 50% 51%, transparent 51%),
+    radial-gradient(circle at 50% 0%, hsl(189 100% 50% / 0.16), transparent 42%);
+  background-size: 100% 4px, 100% 100%;
 }
 
 .gradient-primary {
@@ -120,6 +149,58 @@ body {
 
 .glow-blue {
   box-shadow: 0 0 20px hsl(var(--glow-blue) / 0.3), 0 0 40px hsl(var(--glow-blue) / 0.1);
+}
+
+.glass-panel {
+  border: 1px solid hsl(var(--border) / 0.85);
+  background:
+    linear-gradient(135deg, hsl(0 0% 100% / 0.08), hsl(0 0% 100% / 0.025)),
+    hsl(var(--card) / 0.82);
+  box-shadow: 0 24px 80px hsl(220 40% 2% / 0.55), inset 0 1px 0 hsl(0 0% 100% / 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.panel-hover {
+  transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease, background 240ms ease;
+}
+
+.panel-hover:hover {
+  transform: translateY(-6px);
+  border-color: hsl(var(--primary) / 0.55);
+  box-shadow: 0 28px 90px hsl(189 100% 20% / 0.18), 0 20px 60px hsl(220 40% 2% / 0.55);
+}
+
+.mesh-surface {
+  background:
+    linear-gradient(135deg, hsl(189 100% 50% / 0.14), transparent 32%),
+    linear-gradient(225deg, hsl(31 96% 58% / 0.16), transparent 28%),
+    linear-gradient(315deg, hsl(155 84% 48% / 0.12), transparent 34%),
+    hsl(var(--card) / 0.78);
+}
+
+.dashboard-grid {
+  background-image:
+    linear-gradient(hsl(0 0% 100% / 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(0 0% 100% / 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.shine-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-line::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  transform: translateX(-120%);
+  background: linear-gradient(110deg, transparent, hsl(0 0% 100% / 0.16), transparent);
+  transition: transform 700ms ease;
+}
+
+.shine-line:hover::after {
+  transform: translateX(120%);
 }
 
 @keyframes fade-in {

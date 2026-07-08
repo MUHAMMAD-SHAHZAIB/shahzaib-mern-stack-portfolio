@@ -7,6 +7,7 @@ const skillCategories = [
   {
     title: "Frontend",
     icon: Code2,
+    level: 92,
     skills: [
       "React.js",
       "JavaScript (ES6+)",
@@ -22,6 +23,7 @@ const skillCategories = [
   {
     title: "Backend",
     icon: Database,
+    level: 82,
     skills: [
       "Node.js",
       "Express.js",
@@ -35,6 +37,7 @@ const skillCategories = [
   {
     title: "No Code Tools",
     icon: Zap,
+    level: 88,
     skills: [
       "Claude AI",
       "Cursor.ai",
@@ -48,6 +51,7 @@ const skillCategories = [
   {
     title: "Tools & Design",
     icon: Palette,
+    level: 86,
     skills: [
       "Git & GitHub",
       "Figma",
@@ -65,7 +69,7 @@ const Skills = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="py-12 sm:py-16 md:py-20  sm:px-6 relative">
+    <section id="skills" className="relative px-4 py-16 sm:px-6 md:py-24">
       <div className="container mx-auto">
         <motion.div
           ref={ref}
@@ -73,32 +77,55 @@ const Skills = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-center">
-            Technical <span className="text-gradient">Skills</span>
-          </h2>
-          <p className="text-sm sm:text-base text-muted-foreground text-center mb-8 sm:mb-12 max-w-2xl mx-auto px-4">
-            A comprehensive toolkit for building modern, scalable web applications
-          </p>
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-primary">
+              Skill matrix
+            </p>
+            <h2 className="text-3xl font-black sm:text-5xl">
+              Technical <span className="text-gradient">Skills</span>
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground sm:text-base">
+              A focused toolkit for building modern, scalable, animated web
+              applications.
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-4 sm:gap-6 max-w-6xl mx-auto">
+          <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2">
             {skillCategories.map((category, categoryIndex) => (
               <motion.div
                 key={category.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: categoryIndex * 0.1, duration: 0.6 }}
-                className="bg-card border border-border rounded-2xl p-4 sm:p-6 hover:border-primary/50 transition-all duration-300 relative overflow-hidden group"
+                className="glass-panel panel-hover group relative overflow-hidden rounded-[1.7rem] p-5 sm:p-6"
               >
-                <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 gradient-primary rounded-full blur-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-                
-                <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 relative z-10">
-                  <div className="p-2 sm:p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+
+                <div className="relative z-10 mb-5 flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="rounded-2xl bg-primary/10 p-3 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     <category.icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-black sm:text-2xl">{category.title}</h3>
+                      <p className="text-xs text-muted-foreground">Production ready</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold">{category.title}</h3>
+                  <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-bold text-primary">
+                    {category.level}%
+                  </span>
                 </div>
 
-                <div className="flex flex-wrap gap-2 relative z-10">
+                <div className="relative z-10 mb-5 h-2 overflow-hidden rounded-full bg-white/10">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={isInView ? { width: `${category.level}%` } : {}}
+                    transition={{ delay: 0.2 + categoryIndex * 0.12, duration: 0.8 }}
+                    className="h-full rounded-full bg-gradient-to-r from-primary via-emerald-400 to-accent"
+                  />
+                </div>
+
+                <div className="relative z-10 flex flex-wrap gap-2">
                   {category.skills.map((skill, skillIndex) => (
                     <motion.span
                       key={skill}
@@ -108,7 +135,7 @@ const Skills = () => {
                         delay: categoryIndex * 0.1 + skillIndex * 0.05,
                         duration: 0.3,
                       }}
-                      className="px-3 py-1.5 sm:px-4 sm:py-2 bg-secondary border border-border rounded-lg text-xs sm:text-sm font-medium hover:border-primary/50 hover:bg-primary/10 transition-all duration-300 cursor-default"
+                      className="cursor-default rounded-xl border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium transition-all duration-300 hover:border-primary/50 hover:bg-primary/10 hover:text-primary sm:px-4 sm:py-2 sm:text-sm"
                     >
                       {skill}
                     </motion.span>

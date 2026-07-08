@@ -36,23 +36,26 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/95 backdrop-blur-md border-b border-border shadow-lg" : "bg-transparent"
+        scrolled
+          ? "border-b border-white/10 bg-background/80 shadow-2xl shadow-black/30 backdrop-blur-xl"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-xl sm:text-2xl font-bold gradient-text"
+            className="flex items-center gap-3 text-base font-black sm:text-xl"
           >
-            Muhammad Shahzaib
+            <span className="grid h-9 w-9 place-items-center rounded-xl border border-primary/30 bg-primary/10 text-sm text-primary shadow-glow">
+              MS
+            </span>
+            <span className="gradient-text">Muhammad Shahzaib</span>
           </motion.div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
+          <div className="hidden items-center rounded-2xl border border-white/10 bg-white/[0.04] p-1 backdrop-blur md:flex">
             {navItems.map((item, index) => (
               <motion.button
                 key={item.name}
@@ -60,7 +63,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index }}
                 onClick={() => scrollToSection(item.href)}
-                className="px-3 lg:px-4 py-2 text-sm lg:text-base text-foreground/80 hover:text-primary transition-colors rounded-lg hover:bg-accent/50"
+                className="rounded-xl px-3 py-2 text-sm text-foreground/75 transition-colors hover:bg-white/10 hover:text-primary lg:px-4"
               >
                 {item.name}
               </motion.button>
@@ -70,18 +73,18 @@ const Navbar = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.6 }}
               onClick={() => scrollToSection("#contact")}
-              className="ml-4 px-4 lg:px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all hover:shadow-glow text-sm lg:text-base"
+              className="ml-2 rounded-xl bg-primary px-4 py-2 text-sm font-bold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-glow lg:px-5"
             >
               Hire Me
             </motion.button>
           </div>
 
-          {/* Mobile Menu Button */}
           <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+            className="rounded-xl border border-white/10 bg-white/[0.04] p-2 text-foreground transition-colors hover:text-primary md:hidden"
+            aria-label="Toggle navigation menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </motion.button>
@@ -95,7 +98,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/98 backdrop-blur-lg border-b border-border"
+            className="border-b border-white/10 bg-background/90 backdrop-blur-xl md:hidden"
           >
             <div className="container mx-auto px-4 py-4 space-y-2">
               {navItems.map((item, index) => (
@@ -105,7 +108,7 @@ const Navbar = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 * index }}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-4 py-3 text-foreground/80 hover:text-primary hover:bg-accent/50 rounded-lg transition-all"
+                  className="block w-full rounded-xl px-4 py-3 text-left text-foreground/80 transition-all hover:bg-white/10 hover:text-primary"
                 >
                   {item.name}
                 </motion.button>
@@ -115,7 +118,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
                 onClick={() => scrollToSection("#contact")}
-                className="block w-full px-4 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all text-center"
+                className="block w-full rounded-xl bg-primary px-4 py-3 text-center font-bold text-primary-foreground transition-all hover:bg-primary/90"
               >
                 Hire Me
               </motion.button>
