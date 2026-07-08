@@ -64,7 +64,7 @@ const Hero = () => {
               </h2>
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4">
                 <span className="text-gradient">
-                  Muhammad Shahzaib Khan Khattak
+                  Muhammad Shahzaib Khan Khattak depo
                 </span>
               </h1>
             </motion.div>
